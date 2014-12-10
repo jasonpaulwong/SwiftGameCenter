@@ -1,7 +1,7 @@
 SwiftGameCenter
 ===============
 
-This code is a complete working code of Game Center, as outlined in Ray Wenderlich's "Game Center Tutorial: How to Make a Simple Multiplayer Game with Sprite Kit" (Translation from Obejctive C to Swift).
+This code is a complete working implementation of Apple iOS's Game Center, as outlined in Ray Wenderlich's "Game Center Tutorial: How to Make a Simple Multiplayer Game with Sprite Kit". I translated the tutorial's Objective C implementation to Swift.
 
 For more assistance on incorporating the code into your own projects, visit his tutorial at:
 
