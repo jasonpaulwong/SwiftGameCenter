@@ -1,10 +1,10 @@
-//
-//  MultiplayerNetworking.swift
-//  CatRaceStarter
-//
-//  Created by Jason Wong on 11/20/14.
-//  Copyright (c) 2014 Raywenderlich. All rights reserved.
-//
+/**
+  * MultiplayerNetworking.swift
+  * CatRaceStarter
+  *
+  * Created by Jason Wong on 11/20/14.
+  * Copyright (c) 2014 Raywenderlich. All rights reserved.
+*/
 
 import Foundation
 import GameKit
@@ -56,7 +56,6 @@ struct MessageGameOver {
     var player1Won : Bool
 }
 
-
 class MultiplayerNetworking : NSObject, GameKitHelperDelegate {
     var delegate : MultiplayerNetworkingProtocol?
     var _ourRandomNumber : UInt32!
@@ -72,11 +71,9 @@ class MultiplayerNetworking : NSObject, GameKitHelperDelegate {
         _gameState = GameState.kGameStateWaitingForMatch
         _orderOfPlayers = NSMutableArray()
         
-        // Create a dictionary and add it to the orderOfPlayers array
         var dict = ["\(playerIDKey)":"\(GKLocalPlayer.localPlayer().playerID)", "\(randomNumberKey)":"\(_ourRandomNumber)"]
         _orderOfPlayers.addObject(dict)
     }
-    
     
     func sendRandomNumber() {
         var message = Message(messageType: MessageType.kMessageTypeRandomNumber)
@@ -111,7 +108,7 @@ class MultiplayerNetworking : NSObject, GameKitHelperDelegate {
         
         let gameKitHelper = GameKitHelper.SharedGameKitHelper
         var success = gameKitHelper._match.sendDataToAllPlayers(data, withDataMode: GKMatchSendDataMode.Reliable, error: &error)
-        /*CHECK HERE IF ERROR */
+        
         if(success == false) {
             println("Error sending data: \(error?.localizedDescription)")
             self.matchEnded()
@@ -122,6 +119,7 @@ class MultiplayerNetworking : NSObject, GameKitHelperDelegate {
         var playerID = GKLocalPlayer.localPlayer().playerID
         return self.indexForPlayerWithId(playerID)
     }
+    
     func indexForPlayerWithId(playerId : String) -> Int {
         var index = -1
         _orderOfPlayers.enumerateObjectsUsingBlock( {object, ind, stop in
@@ -132,8 +130,6 @@ class MultiplayerNetworking : NSObject, GameKitHelperDelegate {
                 index = ind
                 stop.initialize(true)
             }
-            
-            
         })
         return index
     }
@@ -219,9 +215,6 @@ class MultiplayerNetworking : NSObject, GameKitHelperDelegate {
             let messageGameOver = UnsafePointer<MessageGameOver>(data.bytes).memory
             self.delegate?.gameOver(messageGameOver.player1Won)
         }
-        
-        //(message as Message).messageType
-        
     }
     
     func processReceivedRandomNumber(randomNumberDetails:NSDictionary) {

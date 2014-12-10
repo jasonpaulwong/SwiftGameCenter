@@ -15,7 +15,6 @@ let LocalPlayerIsAuthenticated : NSString = "local_player_authenticated"
 /* For singleton pattern */
 private let _GameKitHelperSharedInstace = GameKitHelper()
 
-
 protocol GameKitHelperDelegate {
     func matchStarted()
     func matchEnded()
@@ -31,7 +30,6 @@ class GameKitHelper : NSObject, GKMatchmakerViewControllerDelegate, GKMatchDeleg
     var lastError : NSError?
     var playersDict : NSMutableDictionary?
 
-    /* For singleton pattern */
     class var SharedGameKitHelper:GameKitHelper {
         return _GameKitHelperSharedInstace
     }
@@ -56,7 +54,6 @@ class GameKitHelper : NSObject, GKMatchmakerViewControllerDelegate, GKMatchDeleg
             if(error != nil) {
                 self.setLastError(error)
             }
-
             if(viewController != nil) {
                 self.setAuthenticationViewController(viewController)
             }
@@ -90,7 +87,6 @@ class GameKitHelper : NSObject, GKMatchmakerViewControllerDelegate, GKMatchDeleg
 
     }
 
-    
     func findMatchWithMinPlayers(minPlayers:Int, maxPlayers:Int, viewController:UIViewController, delegate:GameKitHelperDelegate) {
 
         if(!_enableGameCenter) {
@@ -133,12 +129,10 @@ class GameKitHelper : NSObject, GKMatchmakerViewControllerDelegate, GKMatchDeleg
         }
     }
     
-    
     /* For protocol GKMatchmakerViewControllerDelegate */
     func matchmakerViewControllerWasCancelled(viewController:GKMatchmakerViewController) {
         viewController.dismissViewControllerAnimated(true, completion: nil)
     }
-    
     
     func matchmakerViewController(viewController: GKMatchmakerViewController!, didFailWithError error:NSError!) {
         viewController.dismissViewControllerAnimated(true, completion: nil)
