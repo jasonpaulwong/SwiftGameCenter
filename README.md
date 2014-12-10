@@ -7,6 +7,7 @@ For more assistance on incorporating the code into your own projects, visit his 
 
 http://www.raywenderlich.com/60980/game-center-tutorial-how-to-make-a-simple-multiplayer-game-with-sprite-kit-part-1
 <br>
+<br>
 http://www.raywenderlich.com/60998/game-center-tutorial-how-to-make-a-simple-multiplayer-game-with-sprite-kit-part-2
 
 to get more information on how to use the methods and calls.
