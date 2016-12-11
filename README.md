@@ -1,3 +1,6 @@
+Update: I wrote this code when I was first learning Swift (which hopefully explains the Objective C naming conventions...) and when Swift was is its early stages. I don't plan on supporting it anymore.
+
+
 SwiftGameCenter
 ===============
 
